@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.myahia.moviesapp"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            buildConfigField 'String', 'MoviesBaseUrl', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'MoviesBaseImageUrl', '"https://image.tmdb.org/t/p/"'
+            buildConfigField 'String', 'API_KEY', '"c9856d0cb57c3f14bf75bdc6c063b8f3"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField 'String', 'MoviesBaseUrl', '"https://api.themoviedb.org/3/"'
+            buildConfigField 'String', 'MoviesBaseImageUrl', '"https://image.tmdb.org/t/p/"'
+            buildConfigField 'String', 'API_KEY', '"c9856d0cb57c3f14bf75bdc6c063b8f3"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    // hilt fragment
+    implementation "androidx.fragment:fragment-ktx:$hilt_fragment"
+    implementation 'androidx.activity:activity-ktx:1.6.1'
+
+    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0"
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation('com.github.bumptech.glide:okhttp3-integration:4.7.1') {
+        exclude group: 'glide-parent'
+    }
+//    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}

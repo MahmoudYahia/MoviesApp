@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movies_list_nav"
+    app:startDestination="@id/moviesListFragment">
+
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.myahia.moviesapp.features.movies.ui.list.MoviesListFragment"
+        android:label="MoviesListFragment">
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.myahia.moviesapp.features.movies.ui.details.MovieDetailsFragment"
+        android:label="MovieDetailsFragment" />
+</navigation>

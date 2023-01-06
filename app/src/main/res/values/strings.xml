@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Movies App</string>
+    <string name="NoInternetConnection">No Internet Connection</string>
+    <string name="SomethingWentWrong">Something went wrong, please try again</string>
+</resources>
